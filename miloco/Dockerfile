@@ -19,9 +19,8 @@ WORKDIR /app
 RUN set -eux; \
     sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources; \
     apt update && apt install -y wget; \
-    wget https://${GITHUB_DOMAIN}/XiaoMi/xiaomi-miloco/archive/$VERSION.tar.gz -O- | tar zxvf - --strip 1 -C .; \
+    wget https://${GITHUB_DOMAIN}/oopuuu/xiaomi-miloco/archive/$VERSION.tar.gz -O- | tar zxvf - --strip 1 -C .; \
     sed -i 's/enable_audio: bool = False,/enable_audio: bool = True,/' miot_kit/miot/camera.py; \
-    sed -i 's/= MIoTCameraVideoQuality.LOW,/= MIoTCameraVideoQuality.HIGH,/' miot_kit/miot/camera.py; \
     cp -rf /app/web_ui /; \
     npm config set registry https://registry.npmmirror.com
 
